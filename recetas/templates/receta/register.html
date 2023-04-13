@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% load static %}
+{% block preparacion %}
+<div id="testmonial" class="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items">
+    <h2 class="section-title my-5 text-center"></h2>
+    <h4 class="pt20 pb20"></h4><br>
+    <div class="row mt-3 mb-5">
+        <div class="col-md-12 my-3 my-md-0">
+            <div class="testmonial-card">
+                <h3 class="testmonial-title">Registrar una nueva receta</h3>
+                <div class="testmonial-body">
+                    <form action="{% url 'receta:receta' %}" method="post">
+                        {% csrf_token %}
+                        <!-- book a table Section  -->
+                        <div class="container-fluid has-bg-overlay text-center text-light middle-items"
+                            id="book-table">
+                            <div class="">
+                                <div class="row mb-5">
+                                    <div class="col-sm-6 col-md-6 col-xs-12 my-2">
+                                        <input type="text" name="autor"
+                                            class="form-control form-control-lg custom-form-control"
+                                            placeholder="Autor" required>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xs-12 my-2">
+                                        <input type="text" name="titulo"
+                                            class="form-control form-control-lg custom-form-control"
+                                            placeholder="Titulo" required>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-6 col-xs-12 my-2">
+                                        <textarea type="text"  name="ingredientes"
+                                            class="form-control form-control-lg custom-form-control"
+                                            placeholder="Ingredientes" required></textarea>
+                                    </div>
+                                    <div class="col-sm-6 col-md-6 col-xs-12 my-2">
+                                        <textarea type="text" name="preparacion"
+                                            class="form-control form-control-lg custom-form-control"
+                                            placeholder="Como se Prepara" required></textarea>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-12 col-xs-12 my-2">
+                                        <input type="text"  name="imagen"
+                                            class="form-control form-control-lg custom-form-control"
+                                            placeholder="Link de la imagen" required>
+                                    </div>
+                                </div>
+                                <input name="registrado" type="submit" class="btn btn-lg btn-primary" id="rounded-btn" value="Registrar">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

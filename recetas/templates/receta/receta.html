@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+{% load static %}
+{% block receta %}
+<!-- BLOG Section  -->
+<div id="blog" class="container-fluid bg-dark text-light py-5 text-center wow fadeIn">
+    <h2 class="section-title my-5 text-center"></h2>
+    <h2 class="section-title py-5">Recetas</h2>
+    <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="foods" role="tabpanel" aria-labelledby="pills-home-tab">
+            <div class="row">
+                {% for autor in autor %}
+                <div class="col-md-4">
+                    <div class="card bg-transparent border my-3 my-md-0">
+                        {% for receta in autor.receta_set.all %}
+                        <img src="{{ receta.imagen }}" alt="#" class="rounded-0 card-img-top mg-responsive" style="height: 250px;">
+                        <div class="card-body">
+                            <h1 class="text-center mb-4"><a href="/preparacion/{{autor.id}}/{{receta.id}}/" class="badge badge-primary">Como se prepara</a></h1>
+                            {% endfor %}
+                            <h4 class="pt20 pb20">Autor</h4>
+                            <p class="text-white">{{ autor.nombre }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

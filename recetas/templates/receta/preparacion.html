@@ -1,0 +1,45 @@
+{% extends "main.html" %}
+{% load static %}
+{% block preparacion %}
+<!-- REVIEWS Section  -->
+<div id="testmonial" class="container-fluid wow fadeIn bg-dark text-light has-height-lg middle-items">
+    <h2 class="section-title my-5 text-center"></h2>
+    <h4 class="pt20 pb20"></h4><br>
+    <div class="row mt-3 mb-5">
+        <div class="col-md-12 my-3 my-md-0">
+            <div class="testmonial-card">
+                <h3 class="testmonial-title">{{ receta }}</h3>
+                <h6 class="testmonial-subtitle">Autor: {{ receta.autor }}</h6>
+                <div class="testmonial-body">
+                    <h4 class="pt20 pb20">Ingredientes</h4>
+                    <p>{{receta.ingredientes}}</p>
+                    <h4 class="pt20 pb20">Preparacion</h4>
+                    <p>{{ receta.preparacion }}</p>
+                    <img src="{{ receta.imagen }}" alt="" class="rounded-0 card-img-top mg-responsive">
+                </div>
+                <h4 class="pt20 pb20">Comentarios</h4>
+                {% for comentario in receta.comentario_set.all %}
+                <p>{{comentario.texto}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- book a table Section  -->
+<div class="container-fluid has-bg-overlay text-center text-light has-height-lg middle-items" id="book-table">
+    <form action="{% url 'receta:preparacion' receta.autor.id receta.id %}" method="POST">
+        {% csrf_token %}
+        <div class="">
+            <h2 class="section-title mb-5">Comentario</h2>
+            <div class="row mb-5">
+                <div class="col-sm-6 col-md-12 col-xs-12 my-2">
+                    <input type="text" id="booktable" class="form-control form-control-lg custom-form-control" name="comentario"
+                        placeholder="comentario">
+                </div>
+            </div>
+            <input class="btn btn-lg btn-primary" id="rounded-btn" type="submit" value="Comentar" name="comentado">
+        </div>
+    </form>
+</div>
+{% endblock %}
