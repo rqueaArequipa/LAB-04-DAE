@@ -16,11 +16,11 @@
                             <img src="{{ receta.imagen }}" alt="#" class="rounded-0 card-img-top mg-responsive"
                                 style="height: 250px;">
                             <div class="card-body">
-                                <h1 class="text-center mb-4"><a href="/preparacion/{{autor.id}}/{{receta.id}}/"
-                                        class="badge badge-primary">Como se prepara</a></h1>
-                                {% endfor %}
                                 <h4 class="pt20 pb20">Autor</h4>
                                 <p class="text-white">{{ autor.nombre }}</p>
+                                <h1 class="text-center mb-4"><a href="/preparacion/{{autor.id}}/{{receta.id}}/"
+                                        class="badge badge-primary">Preparacion</a></h1>
+                                {% endfor %}
                             </div>
                         </div>
                     </div>
